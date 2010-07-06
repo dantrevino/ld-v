@@ -17,23 +17,17 @@ var mapview = Titanium.Map.createView({
 });
 mapWindow.add(mapview);
 
-
 var win2 = Titanium.UI.createWindow({  
-    title:'Tab 2',
+    title:'Teams',
     backgroundColor:'white',
     fullscreen: false
 });
-
 
 var teams = [];
 var events = [];
 
 // scrape the loco teams page for a list of teams
 var xhr = Ti.Network.createHTTPClient();
-
-Ti.include('teams.js');
-
-
 
 //
 // create base UI tab and root window
@@ -53,7 +47,7 @@ var view1 = Ti.UI.createView({
 });
 
 var eventButton = Titanium.UI.createButton({
-	color:'#999',
+	color:'white',
 	backgroundImage: 'button_64x64.png',
 	font:{fontSize:20,fontFamily:'Helvetica Neue'},
 	textAlign:'center',
@@ -67,7 +61,7 @@ var eventButton = Titanium.UI.createButton({
 view1.add(eventButton);
 
 var teamButton = Titanium.UI.createButton({
-	color:'#999',
+	color:'white',
 	backgroundImage: 'button_64x64.png',
 	font:{fontSize:20,fontFamily:'Helvetica Neue'},
 	textAlign:'center',
@@ -83,18 +77,14 @@ win1.add(view1);
 win1.open();
 
 
+Ti.include('teams-json.js');
+Ti.include('events.js');
+ 
 // TODO: list nearby events
 eventButton.addEventListener('click', function (e) 
 {
-   Ti.API.info('you pressed the event button'); 
-});
-
-// TODO: list all teams
-teamButton.addEventListener('click', function (e) 
-{
-   Ti.API.info('you pressed the team button');
-   getTeams();
-   win2.open();
+    Ti.API.info('you pressed the event button'); 
+    loadEvents(e);
 });
 
 

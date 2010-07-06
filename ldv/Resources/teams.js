@@ -4,7 +4,8 @@ Titanium.UI.setBackgroundColor('black');
 function getTeams()
 {
 // yql rocks!
-xhr.open("GET","http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20html%20where%20url%3D%22http://loco.ubuntu.com/teams/%22%20and%20xpath%3D'//ul/li/a'&format=json");
+//xhr.open("GET","http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20html%20where%20url%3D%22http://loco.ubuntu.com/teams/%22%20and%20xpath%3D'//ul/li/a'&format=json");
+xhr.open ("GET", "http://loco.ubuntu.com/services/teams/");
 xhr.onload = function()
 {
 	try
@@ -13,7 +14,8 @@ xhr.onload = function()
 
 		// ignore the first 5 li items on the page since we dont have real
 		// programmatic access to the data yet - warning fragile
-		for (var c=5;c<data.query.results.a.length;c++)
+//		for (var c=5;c<data.query.results.a.length;c++)
+
 		{
 			var teamname = data.query.results.a[c].content;
 			

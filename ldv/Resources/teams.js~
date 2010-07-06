@@ -1,5 +1,5 @@
 // create table view data object
-Titanium.UI.setBackgroundColor('white');
+Titanium.UI.setBackgroundColor('black');
 
 function getTeams()
 {
